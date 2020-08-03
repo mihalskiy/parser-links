@@ -17,7 +17,7 @@ export class AppService extends HttpParser {
     const splitFormat = file.split('\n')
     const links = this.parseLink(splitFormat)
     const linkCount = this.countLink(links)
-    console.error('parse', this.formatLinks(linkCount))
+    console.log('parse', this.formatLinks(linkCount))
 
     return  this.formatLinks(linkCount)
   }
