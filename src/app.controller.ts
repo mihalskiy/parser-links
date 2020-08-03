@@ -10,13 +10,15 @@ export class AppController {
   constructor(
     private readonly appService: AppService,
     configService: ConfigService,
-  ) {
+  ) 
+  {
     this.filePath = path.resolve(__dirname, '../', configService.get('filePath'));
   }
 
   @Get('filename')
   async run(@Query() query): Promise<[]> {
-    const filePath = query.filePath || this.filePath;
+    const filePath = query && query.filePath ? query.filePath : this.filePath;
+    
     return this.appService.init(filePath);
   }
 }
